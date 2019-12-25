@@ -13,12 +13,20 @@ public class Point implements Comparable {
         this.dist = 1;
     }
 
-    public static Point createRandomPoint () {
+    public static Point createRandomPoint () { // 2d
+        double x = (Math.random() * 2) - 1; // -1 <= x <= 1
+        double y = Math.random(); // 0 <= y <= 1
+        return new Point(x, y, 0);
+    }
+
+    /*
+    public static Point createRandomPoint () { // 3d
         double x = (Math.random() * 2) - 1; // -1 <= x <= 1
         double y = (Math.random() * 2) - 1; // -1 <= y <= 1
         double z = Math.random(); // 0 <= z <= 1
         return new Point(x, y, z);
     }
+    */
 
     public double getX() {
         return this.x;
@@ -56,8 +64,15 @@ public class Point implements Comparable {
         return "("+ Double.toString(this.x) + ", " + Double.toString(this.y) + ", "  + Double.toString(this.z) + ")";
     }
 
-    public int compareTo(Object other) {
+    public int compareTo(Object other) { // 2d
+        if (this.getY() > ((Point)other).getY()) return 1;
+        else return -1;
+    }
+
+    /*
+    public int compareTo(Object other) { // 3d
         if (this.getZ() > ((Point)other).getZ()) return 1;
         else return -1;
     }
+     */
 }
